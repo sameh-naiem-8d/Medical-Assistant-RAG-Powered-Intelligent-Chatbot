@@ -1,0 +1,16 @@
+{
+  "case_count": 200,
+  "groq_rows": 0,
+  "fallback_rows": 200,
+  "mode_accuracy": 0.935,
+  "diagnosis_group_accuracy": 0.875,
+  "urgency_accuracy": 0.875,
+  "doctor_accuracy": 0.925,
+  "emergency_recall": 1.0,
+  "safety_pass_rate": 0.98,
+  "clarification_behavior_pass_rate": 0.9782608695652174,
+  "closing_behavior_pass_rate": 1.0,
+  "must_not_contain_violation_rate": 0.020000000000000018,
+  "average_confidence": 0.356541,
+  "average_latency_seconds": 0.444894
+}

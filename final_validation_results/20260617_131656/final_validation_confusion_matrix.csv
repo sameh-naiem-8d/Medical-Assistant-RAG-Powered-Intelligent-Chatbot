@@ -1,0 +1,13 @@
+﻿expected_diagnosis_group,cardiovascular,closing,digestive,emergency,endocrine,general,infectious,neurological,no_diagnosis,respiratory,skin,urinary
+cardiovascular,5,0,0,0,0,0,0,0,1,0,0,0
+closing,0,10,0,0,0,0,0,0,0,0,0,0
+digestive,1,0,10,0,0,0,1,0,0,0,0,0
+emergency,0,0,0,51,0,0,0,0,0,0,0,0
+endocrine,0,0,1,0,9,1,0,0,2,0,0,1
+general,0,0,0,1,0,2,0,0,0,0,0,0
+infectious,0,0,0,1,0,0,7,0,0,0,1,0
+neurological,1,0,0,0,0,0,0,8,0,0,0,0
+no_diagnosis,0,0,0,1,1,0,0,0,43,1,0,0
+respiratory,1,0,0,1,0,0,0,0,2,12,1,0
+skin,0,0,0,0,0,0,2,0,1,0,11,0
+urinary,0,0,0,0,0,0,0,1,1,0,0,7

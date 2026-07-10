@@ -1,0 +1,92 @@
+[
+  {
+    "filename": "disease_classifier.pkl",
+    "expected_destination": "artifacts/disease_classifier.pkl",
+    "size_bytes": 21799073,
+    "sha256": "bdb50f7d59d9c6595352f61e57fd26f81ae847473f70e0d16b5852eef9f30a04",
+    "purpose": "Final RandomForestClassifier disease prediction artifact.",
+    "required": true,
+    "download_url": null,
+    "local_archive_source": "02_MODELS_AND_RUNTIME_ARTIFACTS/01_DISEASE_CLASSIFIER/disease_classifier.pkl"
+  },
+  {
+    "filename": "faiss.index",
+    "expected_destination": "artifacts/faiss.index",
+    "size_bytes": 524110893,
+    "sha256": "34036a2e14247abc383645a5e813562a464d323d51ef205ddfed94438d85b3e7",
+    "purpose": "FAISS vector index for MAQA retrieval.",
+    "required": true,
+    "download_url": null,
+    "local_archive_source": "02_MODELS_AND_RUNTIME_ARTIFACTS/02_FAISS_INDEX/faiss.index"
+  },
+  {
+    "filename": "maqa_embeddings.pkl",
+    "expected_destination": "artifacts/maqa_embeddings.pkl",
+    "size_bytes": 524110990,
+    "sha256": "2d5bc4c74f27106678d50a1fa0eb7a18409b77e40305ca8117a1c2abd0394044",
+    "purpose": "Stored MAQA embedding matrix used to build/verify retrieval artifacts.",
+    "required": true,
+    "download_url": null,
+    "local_archive_source": "02_MODELS_AND_RUNTIME_ARTIFACTS/03_EMBEDDINGS/maqa_embeddings.pkl"
+  },
+  {
+    "filename": "maqa_clean_data.pkl",
+    "expected_destination": "artifacts/maqa_clean_data.pkl",
+    "size_bytes": 127089325,
+    "sha256": "b74906876f245500c14b003ab80823feba10151ec545c9ab8d74f52fd2e60424",
+    "purpose": "Deduplicated processed MAQA records.",
+    "required": true,
+    "download_url": null,
+    "local_archive_source": "02_MODELS_AND_RUNTIME_ARTIFACTS/04_CLEAN_PROCESSED_DATA/maqa_clean_data.pkl"
+  },
+  {
+    "filename": "knowledge_base.pkl",
+    "expected_destination": "artifacts/knowledge_base.pkl",
+    "size_bytes": 130499988,
+    "sha256": "0d5bc6172eb8c079f208c2eea1f5f065825956d6e33490c965c597d50a90136e",
+    "purpose": "MAQA knowledge-base records loaded by RAGService.",
+    "required": true,
+    "download_url": null,
+    "local_archive_source": "02_MODELS_AND_RUNTIME_ARTIFACTS/05_KNOWLEDGE_BASE/knowledge_base.pkl"
+  },
+  {
+    "filename": "medical_knowledge.pkl",
+    "expected_destination": "artifacts/medical_knowledge.pkl",
+    "size_bytes": 17653,
+    "sha256": "31a2328597aaa7b1e4ffc225299c7ac3b437798c7240dccccd26a4899aed353e",
+    "purpose": "Disease descriptions, precautions, and symptom severity lookup.",
+    "required": true,
+    "download_url": null,
+    "local_archive_source": "02_MODELS_AND_RUNTIME_ARTIFACTS/05_KNOWLEDGE_BASE/medical_knowledge.pkl"
+  },
+  {
+    "filename": "disease_label_encoder.pkl",
+    "expected_destination": "artifacts/disease_label_encoder.pkl",
+    "size_bytes": 1132,
+    "sha256": "ff816f3b050ce55c8854bac57ceb189085baf55fa42c7c20e05ddc9a897b31f0",
+    "purpose": "Label encoder for classifier labels.",
+    "required": true,
+    "download_url": null,
+    "local_archive_source": "02_MODELS_AND_RUNTIME_ARTIFACTS/06_LABELS_AND_METADATA/disease_label_encoder.pkl"
+  },
+  {
+    "filename": "symptom_columns.pkl",
+    "expected_destination": "artifacts/symptom_columns.pkl",
+    "size_bytes": 2326,
+    "sha256": "da4c98c92945152d21b3fb2958baa889b8cc6d3b2a4c0c432d42e0d3adae6d75",
+    "purpose": "Ordered symptom feature columns used by the classifier vectorizer.",
+    "required": true,
+    "download_url": null,
+    "local_archive_source": "02_MODELS_AND_RUNTIME_ARTIFACTS/06_LABELS_AND_METADATA/symptom_columns.pkl"
+  },
+  {
+    "filename": "artifact_metrics.json",
+    "expected_destination": "artifacts/artifact_metrics.json",
+    "size_bytes": 1330,
+    "sha256": "448de9a4e980e5099ac68d11b0801290f8cc10985fb28b5f3afee8c4eb56dc40",
+    "purpose": "Saved classifier and RAG artifact metrics.",
+    "required": true,
+    "download_url": null,
+    "local_archive_source": "02_MODELS_AND_RUNTIME_ARTIFACTS/06_LABELS_AND_METADATA/artifact_metrics.json"
+  }
+]

@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-store">
+  <meta http-equiv="Pragma" content="no-cache">
+  <title>MedBridge AI Local Demo</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --ink: #18212f;
+      --muted: #607086;
+      --line: #d8e0ea;
+      --brand: #176b87;
+      --brand-2: #0e4d64;
+      --danger: #b42318;
+      --danger-bg: #fff1f0;
+      --soft: #eef6f8;
+      --user: #e8f3ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    main {
+      width: min(980px, 100%);
+      min-height: calc(100vh - 40px);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 18px 42px rgba(24, 33, 47, 0.08);
+    }
+
+    header {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfdff;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0 0 4px;
+      font-size: 1.25rem;
+    }
+
+    .note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .build-id {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.75rem;
+      line-height: 1.4;
+    }
+
+    button {
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+      font: inherit;
+      min-height: 40px;
+    }
+
+    .secondary {
+      background: #edf1f5;
+      color: var(--ink);
+      padding: 8px 12px;
+    }
+
+    .retry {
+      background: var(--brand);
+      color: #fff;
+      padding: 8px 12px;
+    }
+
+    .connection-status {
+      min-height: 32px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.85rem;
+      border: 1px solid var(--line);
+      background: #f7fafc;
+      color: var(--muted);
+    }
+
+    .connection-status.connected {
+      background: #eaf7ef;
+      border-color: #b7e3c4;
+      color: #116735;
+      font-weight: 700;
+    }
+
+    .connection-status.disconnected {
+      background: #fff1f0;
+      border-color: #ffc5bd;
+      color: var(--danger);
+      font-weight: 700;
+    }
+
+    #messages {
+      padding: 18px;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .message {
+      max-width: 82%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .user {
+      align-self: flex-start;
+      background: var(--user);
+    }
+
+    .assistant {
+      align-self: flex-end;
+      background: #fff;
+    }
+
+    .emergency {
+      border-color: #f1b5ae;
+      background: var(--danger-bg);
+    }
+
+    .emergency-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 26px;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 0.82rem;
+      background: #ffe7e4;
+      color: var(--danger);
+      border-color: #ffc5bd;
+      border: 1px solid #ffc5bd;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    form {
+      border-top: 1px solid var(--line);
+      padding: 14px;
+      background: #fbfdff;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 48px;
+      max-height: 150px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 12px;
+      font: inherit;
+      line-height: 1.5;
+    }
+
+    .send {
+      background: var(--brand);
+      color: white;
+      padding: 0 18px;
+      min-width: 92px;
+    }
+
+    .send:disabled {
+      opacity: 0.65;
+      cursor: wait;
+    }
+
+    .error {
+      color: var(--danger);
+      font-weight: 700;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 0; }
+      main { min-height: 100vh; border-radius: 0; border: 0; }
+      .message { max-width: 96%; }
+      form { grid-template-columns: 1fr; }
+      .send { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>MedBridge AI - تجربة محلية</h1>
+        <p class="note">واجهة بسيطة للاختبار اليدوي فقط. ليست واجهة الفريق الرسمية ولا تصلح للإنتاج.</p>
+        <p class="build-id" id="buildInfo">Frontend build: loading...</p>
+      </div>
+      <div class="header-actions">
+        <span class="connection-status" id="connectionStatus">جاري فحص الاتصال...</span>
+        <button class="retry" id="retryConnectionBtn" type="button">إعادة فحص الاتصال</button>
+        <button class="secondary" id="clearBtn" type="button">محادثة جديدة</button>
+      </div>
+    </header>
+
+    <section id="messages" aria-live="polite"></section>
+
+    <form id="chatForm">
+      <textarea id="messageInput" placeholder="اكتب الأعراض هنا..." required></textarea>
+      <button class="send" id="sendBtn" type="submit" disabled>إرسال</button>
+    </form>
+  </main>
+
+  <script>
+    const FRONTEND_BUILD_ID = "medbridge-local-v3-final-20260620";
+    const API_BASE_URL = "http://127.0.0.1:8010";
+    const HEALTH_URL = `${API_BASE_URL}/health`;
+    const CHAT_URL = `${API_BASE_URL}/chat`;
+    const HEALTH_TIMEOUT_MS = 10000;
+    const CHAT_TIMEOUT_MS = 120000;
+    const CONVERSATION_STORAGE_KEY = "medbridge_local_demo_conversation_id";
+    const HISTORY_STORAGE_KEY = "medbridge_local_demo_history";
+    const messagesEl = document.getElementById("messages");
+    const form = document.getElementById("chatForm");
+    const input = document.getElementById("messageInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const retryConnectionBtn = document.getElementById("retryConnectionBtn");
+    const connectionStatus = document.getElementById("connectionStatus");
+    const buildInfo = document.getElementById("buildInfo");
+    let history = loadHistory();
+    let conversationId = loadConversationId();
+    let serviceConnected = false;
+    let sending = false;
+    let connectionMessageVisible = false;
+
+    function createConversationId() {
+      return window.crypto?.randomUUID?.() ||
+        `local-demo-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    }
+
+    function loadConversationId() {
+      const existing = window.sessionStorage.getItem(CONVERSATION_STORAGE_KEY);
+      if (existing) return existing;
+      const created = createConversationId();
+      window.sessionStorage.setItem(CONVERSATION_STORAGE_KEY, created);
+      return created;
+    }
+
+    function resetConversationId() {
+      conversationId = createConversationId();
+      window.sessionStorage.setItem(CONVERSATION_STORAGE_KEY, conversationId);
+    }
+
+    function loadHistory() {
+      try {
+        const raw = window.sessionStorage.getItem(HISTORY_STORAGE_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed.filter(item => item?.role && item?.content).slice(-40) : [];
+      } catch (_error) {
+        return [];
+      }
+    }
+
+    function saveHistory() {
+      window.sessionStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(history.slice(-40)));
+    }
+
+    function renderStoredHistory() {
+      messagesEl.innerHTML = "";
+      if (!history.length) {
+        addMessage("assistant", "أهلًا، اكتب اللي حاسس بيه أو سؤالك الطبي وسأرد عليك بشكل آمن ومختصر.");
+        return;
+      }
+      for (const item of history) {
+        addMessage(item.role, item.content, item.data || null);
+      }
+    }
+
+    function addMessage(role, content, data = null) {
+      const card = document.createElement("article");
+      card.className = `message ${role === "user" ? "user" : "assistant"}`;
+      const isEmergency = data?.mode === "emergency" || data?.urgency_level === "High";
+      if (isEmergency) {
+        card.classList.add("emergency");
+        const badge = document.createElement("div");
+        badge.className = "emergency-badge";
+        badge.textContent = "تنبيه عاجل";
+        card.appendChild(badge);
+      }
+
+      const text = document.createElement("div");
+      text.textContent = content;
+      card.appendChild(text);
+
+      messagesEl.appendChild(card);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function setConnectionStatus(isConnected, checking = false) {
+      serviceConnected = Boolean(isConnected);
+      connectionStatus.classList.remove("connected", "disconnected");
+
+      if (checking) {
+        connectionStatus.textContent = "جاري فحص الاتصال...";
+      } else if (serviceConnected) {
+        connectionStatus.textContent = "متصل بخدمة MedBridge";
+        connectionStatus.classList.add("connected");
+      } else {
+        connectionStatus.textContent = "غير متصل بالخدمة";
+        connectionStatus.classList.add("disconnected");
+      }
+
+      sendBtn.disabled = sending || !serviceConnected;
+    }
+
+    function logSafeRequestError(url, error, status = null) {
+      console.warn("MedBridge local demo request failed", {
+        url,
+        status,
+        message: error?.message || "Request failed",
+      });
+    }
+
+    async function fetchWithTimeout(url, options = {}, timeoutMs = CHAT_TIMEOUT_MS) {
+      const controller = new AbortController();
+      const timer = window.setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        return await fetch(url, {
+          ...options,
+          signal: controller.signal,
+        });
+      } finally {
+        window.clearTimeout(timer);
+      }
+    }
+
+    function showConnectionMessage() {
+      if (connectionMessageVisible) return;
+      addMessage("assistant", "مش قادر أتصل بخدمة MedBridge حاليًا. تأكد إن السيرفر شغال على المنفذ 8010 وحاول تاني.");
+      connectionMessageVisible = true;
+    }
+
+    async function checkConnection(showMessage = false) {
+      setConnectionStatus(false, true);
+      try {
+        const response = await fetchWithTimeout(HEALTH_URL, {
+          method: "GET",
+          cache: "no-store",
+        }, HEALTH_TIMEOUT_MS);
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        const ok = data?.status === "ok";
+        buildInfo.textContent = `Frontend ${FRONTEND_BUILD_ID} | Backend ${data?.build_id || "unknown"}`;
+        setConnectionStatus(ok);
+        if (ok) {
+          connectionMessageVisible = false;
+          return true;
+        }
+
+        if (showMessage) showConnectionMessage();
+        return false;
+      } catch (error) {
+        setConnectionStatus(false);
+        logSafeRequestError(HEALTH_URL, error);
+        if (showMessage) showConnectionMessage();
+        return false;
+      }
+    }
+
+    function recentHistory() {
+      return history.slice(-10);
+    }
+
+    async function sendMessage(message, historySnapshot) {
+      const payload = {
+        conversation_id: conversationId,
+        source: "local_demo",
+        message,
+        history: historySnapshot,
+      };
+
+      const response = await fetchWithTimeout(CHAT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }, CHAT_TIMEOUT_MS);
+
+      if (!response.ok) {
+        const error = new Error(`HTTP ${response.status}`);
+        error.status = response.status;
+        throw error;
+      }
+
+      return response.json();
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const message = input.value.trim();
+      if (!message) return;
+
+      if (!serviceConnected) {
+        const connected = await checkConnection(true);
+        if (!connected) return;
+      }
+
+      input.value = "";
+      sending = true;
+      sendBtn.disabled = true;
+      sendBtn.textContent = "جارٍ...";
+      const outgoingHistory = recentHistory();
+      addMessage("user", message);
+      history.push({ role: "user", content: message });
+      saveHistory();
+
+      try {
+        const data = await sendMessage(message, outgoingHistory);
+        addMessage("assistant", data.answer || "لم يصل رد واضح من الخدمة.", data);
+        history.push({ role: "assistant", content: data.answer || "", data: { mode: data.mode, urgency_level: data.urgency_level } });
+        saveHistory();
+      } catch (error) {
+        logSafeRequestError(CHAT_URL, error, error?.status || null);
+        setConnectionStatus(false);
+        showConnectionMessage();
+      } finally {
+        sending = false;
+        sendBtn.disabled = !serviceConnected;
+        sendBtn.textContent = "إرسال";
+        input.focus();
+      }
+    });
+
+    retryConnectionBtn.addEventListener("click", () => {
+      checkConnection(true);
+    });
+
+    clearBtn.addEventListener("click", () => {
+      history = [];
+      resetConversationId();
+      window.sessionStorage.removeItem(HISTORY_STORAGE_KEY);
+      renderStoredHistory();
+      input.focus();
+    });
+
+    buildInfo.textContent = `Frontend ${FRONTEND_BUILD_ID} | Backend: checking`;
+    renderStoredHistory();
+    checkConnection(true);
+  </script>
+</body>
+</html>

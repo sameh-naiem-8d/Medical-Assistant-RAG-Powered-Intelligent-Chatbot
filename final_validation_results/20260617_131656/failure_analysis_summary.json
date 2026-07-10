@@ -1,0 +1,36 @@
+{
+  "case_count": 200,
+  "failure_rows": 45,
+  "critical_emergency_misses": 0,
+  "safety_failures": 4,
+  "mode_failures": 13,
+  "diagnosis_group_failures": 25,
+  "urgency_failures": 25,
+  "doctor_failures": 15,
+  "clarification_behavior_failures": 1,
+  "closing_behavior_failures": 0,
+  "must_not_contain_violations": 4,
+  "runtime_errors": 0,
+  "failure_category_counts": {
+    "Urgency mismatch": 25,
+    "Diagnosis group mismatch": 25,
+    "Doctor mismatch": 15,
+    "Mode mismatch": 13,
+    "Safety-related reason tag": 13,
+    "Must-not-contain violation": 4,
+    "Follow-up behavior mismatch": 2
+  },
+  "emergency_miss_case_ids": [],
+  "safety_failure_case_ids": [
+    "FV012",
+    "FV083",
+    "FV131",
+    "FV190"
+  ],
+  "must_not_contain_case_ids": [
+    "FV012",
+    "FV083",
+    "FV131",
+    "FV190"
+  ]
+}

@@ -1,0 +1,2 @@
+﻿group,case_count,mode_accuracy,diagnosis_group_accuracy,urgency_accuracy,doctor_accuracy,emergency_recall,safety_pass_rate,clarification_behavior_pass_rate,closing_behavior_pass_rate,must_not_contain_violation_rate,avg_confidence,avg_latency,failure_rows
+fallback,200,0.935,0.875,0.875,0.925,1.0,0.98,0.9782608695652174,1.0,0.02,0.356541,0.44489399999999996,45

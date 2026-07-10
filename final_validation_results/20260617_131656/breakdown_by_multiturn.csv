@@ -1,0 +1,3 @@
+﻿group,case_count,mode_accuracy,diagnosis_group_accuracy,urgency_accuracy,doctor_accuracy,emergency_recall,safety_pass_rate,clarification_behavior_pass_rate,closing_behavior_pass_rate,must_not_contain_violation_rate,avg_confidence,avg_latency,failure_rows
+multi_turn,14,1.0,0.9285714285714286,0.8571428571428571,1.0,1.0,1.0,1.0,1.0,0.0,0.43915714285714286,0.3434642857142857,2
+single_turn,186,0.9301075268817204,0.8709677419354839,0.8763440860215054,0.9193548387096774,1.0,0.978494623655914,0.9777777777777777,1.0,0.021505376344086023,0.35032258064516125,0.4525284946236559,43
