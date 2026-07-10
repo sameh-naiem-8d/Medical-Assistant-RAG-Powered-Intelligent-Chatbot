@@ -1,0 +1,562 @@
+{
+  "metadata": {
+    "data_root": "D:\\Project Graduation",
+    "training_shape": [
+      4920,
+      133
+    ],
+    "testing_shape": [
+      41,
+      133
+    ],
+    "dataset_csv_shape": [
+      4920,
+      18
+    ],
+    "feature_count": 132,
+    "label_count": 41,
+    "train_class_distribution": {
+      "Fungal infection": 120,
+      "Allergy": 120,
+      "GERD": 120,
+      "Chronic cholestasis": 120,
+      "Drug Reaction": 120,
+      "Peptic ulcer diseae": 120,
+      "AIDS": 120,
+      "Diabetes": 120,
+      "Gastroenteritis": 120,
+      "Bronchial Asthma": 120,
+      "Hypertension": 120,
+      "Migraine": 120,
+      "Cervical spondylosis": 120,
+      "Paralysis (brain hemorrhage)": 120,
+      "Jaundice": 120,
+      "Malaria": 120,
+      "Chicken pox": 120,
+      "Dengue": 120,
+      "Typhoid": 120,
+      "hepatitis A": 120,
+      "Hepatitis B": 120,
+      "Hepatitis C": 120,
+      "Hepatitis D": 120,
+      "Hepatitis E": 120,
+      "Alcoholic hepatitis": 120,
+      "Tuberculosis": 120,
+      "Common Cold": 120,
+      "Pneumonia": 120,
+      "Dimorphic hemmorhoids(piles)": 120,
+      "Heart attack": 120,
+      "Varicose veins": 120,
+      "Hypothyroidism": 120,
+      "Hyperthyroidism": 120,
+      "Hypoglycemia": 120,
+      "Osteoarthristis": 120,
+      "Arthritis": 120,
+      "(vertigo) Paroymsal  Positional Vertigo": 120,
+      "Acne": 120,
+      "Urinary tract infection": 120,
+      "Psoriasis": 120,
+      "Impetigo": 120
+    },
+    "test_class_distribution": {
+      "Fungal infection": 1,
+      "Allergy": 1,
+      "GERD": 1,
+      "Chronic cholestasis": 1,
+      "Drug Reaction": 1,
+      "Peptic ulcer diseae": 1,
+      "AIDS": 1,
+      "Diabetes": 1,
+      "Gastroenteritis": 1,
+      "Bronchial Asthma": 1,
+      "Hypertension": 1,
+      "Migraine": 1,
+      "Cervical spondylosis": 1,
+      "Paralysis (brain hemorrhage)": 1,
+      "Jaundice": 1,
+      "Malaria": 1,
+      "Chicken pox": 1,
+      "Dengue": 1,
+      "Typhoid": 1,
+      "hepatitis A": 1,
+      "Hepatitis B": 1,
+      "Hepatitis C": 1,
+      "Hepatitis D": 1,
+      "Hepatitis E": 1,
+      "Alcoholic hepatitis": 1,
+      "Tuberculosis": 1,
+      "Common Cold": 1,
+      "Pneumonia": 1,
+      "Dimorphic hemmorhoids(piles)": 1,
+      "Heart attack": 1,
+      "Varicose veins": 1,
+      "Hypothyroidism": 1,
+      "Hyperthyroidism": 1,
+      "Hypoglycemia": 1,
+      "Osteoarthristis": 1,
+      "Arthritis": 1,
+      "(vertigo) Paroymsal  Positional Vertigo": 1,
+      "Acne": 1,
+      "Urinary tract infection": 1,
+      "Psoriasis": 1,
+      "Impetigo": 1
+    },
+    "testing_rows_per_class_min": 1,
+    "testing_rows_per_class_max": 1,
+    "cv_splits": 5,
+    "optional_packages": {
+      "xgboost": false,
+      "lightgbm": false
+    },
+    "labels": [
+      "(vertigo) Paroymsal  Positional Vertigo",
+      "AIDS",
+      "Acne",
+      "Alcoholic hepatitis",
+      "Allergy",
+      "Arthritis",
+      "Bronchial Asthma",
+      "Cervical spondylosis",
+      "Chicken pox",
+      "Chronic cholestasis",
+      "Common Cold",
+      "Dengue",
+      "Diabetes",
+      "Dimorphic hemmorhoids(piles)",
+      "Drug Reaction",
+      "Fungal infection",
+      "GERD",
+      "Gastroenteritis",
+      "Heart attack",
+      "Hepatitis B",
+      "Hepatitis C",
+      "Hepatitis D",
+      "Hepatitis E",
+      "Hypertension",
+      "Hyperthyroidism",
+      "Hypoglycemia",
+      "Hypothyroidism",
+      "Impetigo",
+      "Jaundice",
+      "Malaria",
+      "Migraine",
+      "Osteoarthristis",
+      "Paralysis (brain hemorrhage)",
+      "Peptic ulcer diseae",
+      "Pneumonia",
+      "Psoriasis",
+      "Tuberculosis",
+      "Typhoid",
+      "Urinary tract infection",
+      "Varicose veins",
+      "hepatitis A"
+    ]
+  },
+  "models": [
+    {
+      "model": "current_rf_300_balanced",
+      "supports_predict_proba": true,
+      "needs_probability_calibration": false,
+      "cv": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "mean_fit_time_seconds_per_fold": 0.6084541199728847,
+        "mean_predict_latency_ms_per_sample": 0.07534953252113295,
+        "mean_confidence": 0.9983733062330624,
+        "top_confusion_pairs": [],
+        "weakest_labels_by_f1": [
+          {
+            "label": "(vertigo) Paroymsal  Positional Vertigo",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "AIDS",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Acne",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Alcoholic hepatitis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Allergy",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Arthritis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Bronchial Asthma",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Cervical spondylosis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          }
+        ]
+      },
+      "official_testing_csv": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "predict_latency_ms_per_sample": 1.7274097545163296,
+        "mean_confidence": 1.0
+      },
+      "fit_time_seconds_full_training": 0.6839247000170872,
+      "serialized_model_size_bytes_estimate": 21799073
+    },
+    {
+      "model": "logistic_regression_lbfgs",
+      "supports_predict_proba": true,
+      "needs_probability_calibration": false,
+      "cv": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "mean_fit_time_seconds_per_fold": 2.4259333999827506,
+        "mean_predict_latency_ms_per_sample": 0.004137174805580843,
+        "mean_confidence": 0.9784305333010561,
+        "top_confusion_pairs": [],
+        "weakest_labels_by_f1": [
+          {
+            "label": "(vertigo) Paroymsal  Positional Vertigo",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "AIDS",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Acne",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Alcoholic hepatitis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Allergy",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Arthritis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Bronchial Asthma",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Cervical spondylosis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          }
+        ]
+      },
+      "official_testing_csv": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "predict_latency_ms_per_sample": 0.07388780529542667,
+        "mean_confidence": 0.9917303566403001
+      },
+      "fit_time_seconds_full_training": 2.212874799966812,
+      "serialized_model_size_bytes_estimate": 47375
+    },
+    {
+      "model": "linear_svm",
+      "supports_predict_proba": false,
+      "needs_probability_calibration": true,
+      "cv": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "mean_fit_time_seconds_per_fold": 0.2011182599933818,
+        "mean_predict_latency_ms_per_sample": 0.0022780081083074335,
+        "mean_confidence": null,
+        "top_confusion_pairs": [],
+        "weakest_labels_by_f1": [
+          {
+            "label": "(vertigo) Paroymsal  Positional Vertigo",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "AIDS",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Acne",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Alcoholic hepatitis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Allergy",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Arthritis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Bronchial Asthma",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Cervical spondylosis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          }
+        ]
+      },
+      "official_testing_csv": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "predict_latency_ms_per_sample": 0.1951219519691133,
+        "mean_confidence": null
+      },
+      "fit_time_seconds_full_training": 0.27933319995645434,
+      "serialized_model_size_bytes_estimate": 47243
+    },
+    {
+      "model": "random_forest_100_balanced",
+      "supports_predict_proba": true,
+      "needs_probability_calibration": false,
+      "cv": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "mean_fit_time_seconds_per_fold": 0.18692848000209777,
+        "mean_predict_latency_ms_per_sample": 0.028153048777135044,
+        "mean_confidence": 0.9985345528455285,
+        "top_confusion_pairs": [],
+        "weakest_labels_by_f1": [
+          {
+            "label": "(vertigo) Paroymsal  Positional Vertigo",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "AIDS",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Acne",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Alcoholic hepatitis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Allergy",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Arthritis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Bronchial Asthma",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Cervical spondylosis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          }
+        ]
+      },
+      "official_testing_csv": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "predict_latency_ms_per_sample": 0.6514585366836045,
+        "mean_confidence": 1.0
+      },
+      "fit_time_seconds_full_training": 0.19343740004114807,
+      "serialized_model_size_bytes_estimate": 7263985
+    },
+    {
+      "model": "extra_trees_300_balanced",
+      "supports_predict_proba": true,
+      "needs_probability_calibration": false,
+      "cv": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "mean_fit_time_seconds_per_fold": 0.41534926001913847,
+        "mean_predict_latency_ms_per_sample": 0.06058542687271729,
+        "mean_confidence": 1.0,
+        "top_confusion_pairs": [],
+        "weakest_labels_by_f1": [
+          {
+            "label": "(vertigo) Paroymsal  Positional Vertigo",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "AIDS",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Acne",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Alcoholic hepatitis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Allergy",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Arthritis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Bronchial Asthma",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          },
+          {
+            "label": "Cervical spondylosis",
+            "f1": 1.0,
+            "recall": 1.0,
+            "precision": 1.0,
+            "support": 120
+          }
+        ]
+      },
+      "official_testing_csv": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "predict_latency_ms_per_sample": 1.1840219518578634,
+        "mean_confidence": 1.0
+      },
+      "fit_time_seconds_full_training": 0.5084724000189453,
+      "serialized_model_size_bytes_estimate": 20739089
+    }
+  ]
+}
