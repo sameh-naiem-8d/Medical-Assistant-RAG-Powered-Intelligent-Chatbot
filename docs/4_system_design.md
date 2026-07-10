@@ -1,45 +1,86 @@
-# System Analysis & Design
+# System Design
+
+## System Overview
+
+MedBridge AI is an AI-powered medical assistant that combines Machine Learning, Retrieval-Augmented Generation (RAG), and a Large Language Model (LLM) to provide preliminary medical guidance based on user symptoms.
 
 ## System Architecture
-The system follows a Retrieval-Augmented Generation (RAG) pipeline:
 
-User → API → Retriever → Vector Database → Language Model → Response
+```
+User
+   │
+   ▼
+FastAPI Backend
+   │
+   ▼
+Conversation Orchestrator
+   │
+   ├── Disease Classifier
+   ├── RAG Service
+   ├── Knowledge Base
+   └── LLM Service
+   │
+   ▼
+AI Response
+```
 
----
+## Main Components
 
-## Components
+### Backend
 
-### 1. Data Layer
-- Medical datasets  
-- FAQs and documentation  
+- Handles API requests.
+- Validates user input.
+- Manages chat sessions.
+- Coordinates all system services.
 
----
+### Disease Classifier
 
-### 2. Vector Database
-- FAISS or Pinecone for similarity search  
+- Receives extracted symptoms.
+- Predicts the most likely diseases using a Machine Learning model.
 
----
+### Knowledge Base
 
-### 3. RAG Pipeline
-- **Retriever:** Fetches relevant documents  
-- **Generator (LLM):** Produces final answer  
+- Stores trusted medical information.
+- Provides medical context for the AI.
 
----
+### RAG Service
 
-### 4. Backend
-- FastAPI or Flask for API development  
+- Searches the knowledge base for relevant information.
+- Supplies the retrieved content to the LLM.
 
----
+### LLM Service
 
-### 5. Deployment
-- Azure App Service or Azure Machine Learning  
+- Generates natural and easy-to-understand responses.
+- Uses retrieved medical knowledge to improve response quality.
 
----
+## API Endpoints
 
-## System Flow
-1. User sends a query  
-2. API processes the request  
-3. Retriever searches in vector database  
-4. Relevant documents are passed to the LLM  
-5. LLM generates the final answer  
-6. Response is returned to the user  
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/chat` | POST | Process user symptoms and generate a response. |
+| `/health` | GET | Check system health and artifact status. |
+
+## Workflow
+
+1. The user submits symptoms.
+2. The backend validates the request.
+3. The classifier predicts possible diseases.
+4. The RAG service retrieves related medical knowledge.
+5. The LLM generates the final response.
+6. The response is returned to the user.
+
+## Technologies
+
+- Python
+- FastAPI
+- Scikit-learn
+- FAISS
+- Groq LLM
+- Git & GitHub
+
+## Future Improvements
+
+- Voice interaction.
+- Mobile application support.
+- Hospital information system integration.
+- Enhanced Arabic language understanding.
