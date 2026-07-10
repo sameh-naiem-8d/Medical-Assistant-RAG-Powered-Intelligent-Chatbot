@@ -1,42 +1,35 @@
-# Project Planning & Management
+# Project Planning
 
 ## Project Overview
-This project aims to build a Medical Assistant chatbot powered by Retrieval-Augmented Generation (RAG). The system retrieves relevant medical information from a knowledge base and generates accurate responses to user queries.
 
----
+MedBridge AI is an AI-powered medical assistant designed to provide preliminary health guidance by analyzing user symptoms and retrieving relevant medical information. The system combines Machine Learning, Retrieval-Augmented Generation (RAG), and a Large Language Model (LLM) to generate accurate and safe responses.
 
 ## Objectives
-- Provide accurate and reliable medical information  
-- Reduce response time for users  
-- Improve accessibility to medical knowledge  
 
----
+- Build an AI-powered medical assistant.
+- Predict possible diseases from user symptoms.
+- Retrieve trusted medical knowledge.
+- Generate safe and understandable responses.
+- Provide an easy-to-use API.
 
-## Team Roles
-- **Project Manager:** Oversees planning and coordination  
-- **Data Engineer:** Handles data collection and preprocessing  
-- **ML Engineer:** Builds and optimizes RAG pipeline  
-- **Backend Developer:** Develops API and system integration  
-- **DevOps Engineer:** Handles deployment and monitoring  
+## Project Scope
 
----
+The project focuses on providing preliminary medical guidance and educational information. It is not intended to replace professional medical diagnosis.
 
-## Timeline
+## Team Responsibilities
 
-| Week | Task |
-|------|------|
-| 1 | Data Collection |
-| 2 | Preprocessing & EDA |
-| 3 | Model Development |
-| 4 | Evaluation |
-| 5 | Deployment |
+- Member 1 – Project Planning & Documentation
+- Member 2 – Backend Development
+- Member 3 – AI Pipeline
+- Member 4 – Machine Learning & RAG
+- Member 5 – LLM Integration
+- Member 6 – Testing & Deployment
 
----
+## Technologies
 
-## Tools & Technologies
-- Python  
-- Hugging Face  
-- LangChain  
-- FAISS / Pinecone  
-- Azure  
-- MLflow  
+- Python
+- FastAPI
+- FAISS
+- Scikit-learn
+- Groq LLM
+- Git & GitHub
